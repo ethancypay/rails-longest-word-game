@@ -17,20 +17,16 @@ class GamesController < ApplicationController
 
     letters = params['data_letters'].split(' ')
 
-    @results = nil
-
     letters.each do |letter|
       input.delete_at(input.index(letter)) if input.include?(letter)
     end
 
-    if input.empty?
-      if real_word
-        @results = "<p>Congrats, <strong>#{input_for_result.upcase}</strong> is a valid word!</p>"
-      else
-        @results = "<p>Sorry, but <strong>#{input_for_result.upcase}</strong> does not seem to be a valid word...</p>"
-      end
+    if real_word && input.empty?
+      @results = "Congrats, #{input_for_result.upcase} is a valid word!"
+    elsif !input.empty?
+      @results = "Sorry, but #{input_for_result.upcase} cannot be built by #{letters.join(', ').upcase}."
     else
-      @results = "<p>Sorry, but <strong>#{input_for_result.upcase}</strong> cannot be built by #{letters.join(', ').upcase}.</p>"
+      @results = "Sorry, but #{input_for_result.upcase} does not seem to be a valid word..."
     end
   end
 end

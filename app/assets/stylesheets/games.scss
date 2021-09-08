@@ -1,15 +1,35 @@
 // Place all the styles related to the games controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.container {
+  margin: 0 auto;
+  width: 800px;
+  text-align: center;
+}
+
 .letter-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .letter-container > div {
-  text-align: center;
   padding: 20px;
   width: 18px;
   margin: 0 0 8px 8px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 8px;
+  &:hover {
+    background-color: rgb(134, 211, 255);
+    box-shadow: none;
+  }
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+label {
+  width: 100%;
 }
